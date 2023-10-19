@@ -9,9 +9,16 @@ type SidebarItemProps = {
   label: string
   active?: boolean
   href: string
+  collapse: boolean
 }
 
-export const SidebarItem: FC<SidebarItemProps> = ({ label, active, href, icon: Icon }) => {
+export const SidebarItem: FC<SidebarItemProps> = ({
+  label,
+  active,
+  href,
+  icon: Icon,
+  collapse,
+}) => {
   return (
     <Link
       href={href}
@@ -20,8 +27,18 @@ export const SidebarItem: FC<SidebarItemProps> = ({ label, active, href, icon: I
         active && 'text-white'
       )}
     >
-      <Icon size={26} />
-      <p className="trancate w-full">{label}</p>
+      {!collapse ? (
+        <>
+          <Icon size={26} />
+          <p className="trancate w-full">{label}</p>
+        </>
+      ) : (
+        <>
+          <div className="px-4">
+            <Icon size={26} />
+          </div>
+        </>
+      )}
     </Link>
   )
 }
