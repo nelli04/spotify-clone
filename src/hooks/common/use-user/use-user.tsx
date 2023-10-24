@@ -14,7 +14,7 @@ type UserContextType = {
 }
 
 type Props = {
-  [propName: string]: any
+  [propName: string]: string
 }
 
 export const UserContext = createContext<UserContextType | undefined>(undefined)

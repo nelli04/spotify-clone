@@ -7,7 +7,7 @@ type PlayerStore = {
   activeId?: string
   setId: (id: string) => void
   setIds: (ids: string[]) => void
-  setUnshuffledIds: (unShuffledIds: string[]) => void
+  setUnShuffledIds: (unShuffledIds: string[]) => void
   reset: () => void
   shuffle: (ids: string[]) => void
   resetShuffle: (ids: string[]) => void
@@ -18,9 +18,9 @@ export const usePlayer = create<PlayerStore>(set => ({
   activeId: undefined,
   unShuffledIds: [],
   setId: (id: string) => set({ activeId: id }),
-  setIds: (ids: string[]) => set({ ids: ids }),
-  setUnshuffledIds: (unShuffledIds: string[]) => set({ unShuffledIds }),
-  reset: () => set({ ids: [], activeId: undefined }),
+  setIds: (ids: string[]) => set({ ids }),
+  setUnShuffledIds: (unShuffledIds: string[]) => set({ unShuffledIds }),
+  reset: () => set({ ids: [], unShuffledIds: [], activeId: undefined }),
   shuffle: (ids: string[]) =>
     set({
       ids: arrayShuffle(ids),
