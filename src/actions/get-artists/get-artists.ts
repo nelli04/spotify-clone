@@ -17,3 +17,17 @@ export const getArtists = async (): Promise<Artists[]> => {
 
   return (data as any) || []
 }
+
+export async function getArtistById(id: string): Promise<Artists> {
+  const { data, error } = await supabase.from('artists').select('*').eq('id', id).single()
+
+  if (error) {
+    console.error(error)
+  }
+
+  return {
+    id: data.id,
+    author: data.author,
+    image_path: data.image_path,
+  }
+}
